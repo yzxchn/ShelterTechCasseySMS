@@ -1,0 +1,27 @@
+{
+  "name": "hero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apiai": "^3.0.3",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "nodemon": "^1.12.1",
+    "request": "^2.72.0",
+    "request-promise-native": "^1.0.5",
+    "uuid": "^2.0.3"
+  }
+}
