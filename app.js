@@ -10,7 +10,7 @@ const fb_events = require('./fb_messenger/event_handling.js');
 const fb_utils = require('./fb_messenger/messenger_utils.js');
 const utils = require('./utils.js');
 const util = require('util');
-const askdarcel = require('./askdarcel.js');
+//const askdarcel = require('./askdarcel.js');
 
 
 // Messenger API parameters
@@ -31,7 +31,7 @@ if (!config.SERVER_URL) { //used for ink to static files
 }
 
 // categories is a promise obj
-const categories = askdarcel.getCategoryMapping();
+//const categories = askdarcel.getCategoryMapping();
 
 app.set('port', (process.env.PORT || 5000))
 
