@@ -38,4 +38,4 @@ module.exports = {
     };
  }
 
-geoCoding('221 7th street, San Francisco, CA')
+// geoCoding('221 7th street, San Francisco, CA')
