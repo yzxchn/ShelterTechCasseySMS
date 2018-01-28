@@ -34,8 +34,12 @@ module.exports = {
          }
    })
  } catch(e){
-            console.error("Failed calling Send API", e);
+            console.error("Please specify city", e);
     };
  }
 
+ // geoCoding('111 Market Street');
+ //  geoCoding('111 Market Street Philadelphia');
 // geoCoding('221 7th street, San Francisco, CA')
+//geoCoding('221 7th street San Francisco 94103')
+//geoCoding('221 7th street, San Francisco, CA 94103')
