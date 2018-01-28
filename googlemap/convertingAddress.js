@@ -39,7 +39,8 @@ module.exports = {
  }
 
  // geoCoding('111 Market Street');
- //  geoCoding('111 Market Street Philadelphia');
+  // geoCoding('111 Market Street San Francisco');
+  // geoCoding('111 Market Street SF');
 // geoCoding('221 7th street, San Francisco, CA')
 //geoCoding('221 7th street San Francisco 94103')
 //geoCoding('221 7th street, San Francisco, CA 94103')
