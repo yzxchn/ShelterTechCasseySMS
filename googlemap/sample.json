@@ -1,0 +1,109 @@
+{
+    "results": [
+        {
+            "address_components": [
+                {
+                    "long_name": "221",
+                    "short_name": "221",
+                    "types": [
+                        "street_number"
+                    ]
+                },
+                {
+                    "long_name": "7th Street",
+                    "short_name": "7th St",
+                    "types": [
+                        "route"
+                    ]
+                },
+                {
+                    "long_name": "South of Market",
+                    "short_name": "South of Market",
+                    "types": [
+                        "neighborhood",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "San Francisco",
+                    "short_name": "SF",
+                    "types": [
+                        "locality",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "San Francisco County",
+                    "short_name": "San Francisco County",
+                    "types": [
+                        "administrative_area_level_2",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "California",
+                    "short_name": "CA",
+                    "types": [
+                        "administrative_area_level_1",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "United States",
+                    "short_name": "US",
+                    "types": [
+                        "country",
+                        "political"
+                    ]
+                },
+                {
+                    "long_name": "94103",
+                    "short_name": "94103",
+                    "types": [
+                        "postal_code"
+                    ]
+                },
+                {
+                    "long_name": "4003",
+                    "short_name": "4003",
+                    "types": [
+                        "postal_code_suffix"
+                    ]
+                }
+            ],
+            "formatted_address": "221 7th St, San Francisco, CA 94103, USA",
+            "geometry": {
+                "bounds": {
+                    "northeast": {
+                        "lat": 37.77797810000001,
+                        "lng": -122.4085444
+                    },
+                    "southwest": {
+                        "lat": 37.7776982,
+                        "lng": -122.4088965
+                    }
+                },
+                "location": {
+                    "lat": 37.7778382,
+                    "lng": -122.4087205
+                },
+                "location_type": "ROOFTOP",
+                "viewport": {
+                    "northeast": {
+                        "lat": 37.7791871302915,
+                        "lng": -122.4073714697085
+                    },
+                    "southwest": {
+                        "lat": 37.77648916970851,
+                        "lng": -122.4100694302915
+                    }
+                }
+            },
+            "place_id": "ChIJEWfZtIOAhYARb2WezoyqzYs",
+            "types": [
+                "premise"
+            ]
+        }
+    ],
+    "status": "OK"
+}
