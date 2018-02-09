@@ -1,7 +1,7 @@
 "use strict";
 
 const request = require('request');
-const config = require('../conf.js');
+const settings = require('../settings.js');
 const crypto = require('crypto');
 
 module.exports = {
@@ -18,7 +18,7 @@ function callSendAPI(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
-            access_token: config.FB_PAGE_TOKEN
+            access_token: settings.tokens.FB_PAGE_TOKEN
         },
         method: 'POST',
         json: messageData
@@ -60,7 +60,7 @@ function verifyRequestSignature(req, res, buf) {
         var method = elements[0];
         var signatureHash = elements[1];
 
-        var expectedHash = crypto.createHmac('sha1', config.FB_APP_SECRET)
+        var expectedHash = crypto.createHmac('sha1', settings.tokens.FB_APP_SECRET)
             .update(buf)
             .digest('hex');
 

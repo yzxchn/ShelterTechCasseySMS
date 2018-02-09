@@ -1,7 +1,7 @@
 "use strict";
 
 const apiai_interface = require("./apiai/interface.js");
-const config = require('../conf.js');
+const settings = require('../settings.js');
 
 module.exports.handleLocation = function (senderID, sessionID, attachment) {
     var coordinates = attachment.payload.coordinates;

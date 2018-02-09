@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('./conf.js');
+const settings = require('./settings.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -13,20 +13,21 @@ const util = require('util');
 //const askdarcel = require('./askdarcel.js');
 
 
+let keys = settings.tokens;
 // Messenger API parameters
-if (!config.FB_PAGE_TOKEN) {
+if (!keys.FB_PAGE_TOKEN) {
     throw new Error('missing FB_PAGE_TOKEN');
 }
-if (!config.FB_VERIFY_TOKEN) {
+if (!keys.FB_VERIFY_TOKEN) {
     throw new Error('missing FB_VERIFY_TOKEN');
 }
-if (!config.API_AI_CLIENT_ACCESS_TOKEN) {
+if (!keys.API_AI_CLIENT_ACCESS_TOKEN) {
     throw new Error('missing API_AI_CLIENT_ACCESS_TOKEN');
 }
-if (!config.FB_APP_SECRET) {
+if (!keys.FB_APP_SECRET) {
     throw new Error('missing FB_APP_SECRET');
 }
-if (!config.SERVER_URL) { //used for ink to static files
+if (!keys.SERVER_URL) { //used for ink to static files
     throw new Error('missing SERVER_URL');
 }
 
@@ -61,7 +62,7 @@ app.get('/', function (req, res) {
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
     console.log("request");
-    if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
+    if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === keys.FB_VERIFY_TOKEN) {
         res.status(200).send(req.query['hub.challenge']);
         console.log("Successfully verified with Facebook.");
     } else {

@@ -1,7 +1,7 @@
 "use strict";
 const actions = require('./actions.js');
 const fb_messaging = require('../messaging.js');
-const config = require('../../conf.js');
+const settings = require('../../settings.js');
 const apiai = require('apiai');
 const utils = require('../../utils.js');
 
@@ -12,7 +12,7 @@ module.exports = {
     sendEventToApiAi: sendEventToApiAi
 }
 
-const apiAiService = apiai(config.API_AI_CLIENT_ACCESS_TOKEN, {
+const apiAiService = apiai(settings.tokens.API_AI_CLIENT_ACCESS_TOKEN, {
     language: "en",
     requestSource: "fb"
 });

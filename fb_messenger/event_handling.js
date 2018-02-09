@@ -4,7 +4,7 @@ const fb_messaging = require('./messaging.js');
 const fb_utils = require('./messenger_utils.js');
 const fb_attach = require('./attachment.js');
 const apiai_interface = require('./apiai/interface.js');
-const templating = require('../generateResourceListing.js');
+const templating = require('../askdarcel/generateResourceListing.js');
 const uuid = require('uuid');
 
 module.exports = {
