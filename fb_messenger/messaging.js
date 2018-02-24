@@ -5,6 +5,7 @@ const utils = require('../utils.js');
 module.exports = {
     sendQuickReply: sendQuickReply, 
     sendTextMessage: sendTextMessage,
+    sendTextMessages: sendTextMessages,
     sendTemplateMessage: sendTemplateMessage,
     sendImageMessage: sendImageMessage,
     sendGifMessage: sendGifMessage, 
@@ -40,7 +41,7 @@ function sendQuickReply(recipientId, text, replies, metadata) {
     fb_utils.callSendAPI(messageData);
 }
 
-function sendTextMessage(recipientId, text) {
+function sendTextMessage(recipientId, text, callback) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -49,9 +50,20 @@ function sendTextMessage(recipientId, text) {
             text: text
         }
     };
-    fb_utils.callSendAPI(messageData);
+    fb_utils.callSendAPI(messageData, callback);
 }
 
+function sendTextMessages(recipientId, text_array) {
+    if (text_array.length > 0){
+        let text = text_array.shift();
+        sendTextMessage(recipientId, text, 
+            function () {
+                sendTextMessages(recipientId, text_array);
+            }
+        );
+    }
+}
+    
 function sendTemplateMessage(recipientId, templatePayload) {
     var messageData = {
         recipient: {

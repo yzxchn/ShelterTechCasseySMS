@@ -20,7 +20,7 @@ const apiAiService = apiai(settings.tokens.API_AI_CLIENT_ACCESS_TOKEN, {
 function handleApiAiResponse(sender, response) {
     let responseText = response.result.fulfillment.speech;
     let responseData = response.result.fulfillment.data;
-    let messages = response.result.fulfillment.messages;
+    let fulfillment_messages = response.result.fulfillment.messages;
     let action = response.result.action;
     let contexts = response.result.contexts;
     let parameters = response.result.parameters;
@@ -30,22 +30,28 @@ function handleApiAiResponse(sender, response) {
 
     fb_messaging.sendTypingOff(sender);
     
-    if (messages.length == 0 && !utils.isDefined(action)){
+    if (fulfillment_messages.length == 0 && !utils.isDefined(action)){
         console.log('Unknown query' + response.result.resolvedQuery);
         fb_messaging.sendTextMessage(sender, "I'm not sure what you want. Can you be more specific?");
     } else {
-        console.log(messages);
         //Facebook doesn't send messages in order, join the messages together for now
 //        for (let msg of messages) {
 //            console.log("Sending message from handleApiAiAction");
 //            // not differentiating between default text message and custom payloads for now.
 //            fb_messaging.sendTextMessage(sender, msg.speech);
 //        }
-        let final_msg = "";
-        for (let m of messages) {
-            final_msg = final_msg.concat(m.speech);
+        //let final_msg = "";
+        //for (let m of messages) {
+        //    final_msg = final_msg.concat(m.speech);
+        //}
+        let messages = [];
+        for (let m of fulfillment_messages) {
+            if (m.type == 0){
+                messages.push(m.speech);
+            }
         }
-        handleApiAiAction(sender, action, final_msg, contexts, parameters);
+        console.log(messages);
+        handleApiAiAction(sender, action, messages, contexts, parameters);
     }
 }
 
@@ -150,16 +156,16 @@ function handleApiAiResponse(sender, response) {
 //     }
 // }
 
-function handleApiAiAction(sender, action, message, contexts, parameters) {
+function handleApiAiAction(sender, action, messages, contexts, parameters) {
     switch (action) {
         case 'request-location': //asks the user to share their location
-            actions.requestUserLocation(sender, action, message, contexts, parameters);
+            actions.requestUserLocation(sender, action, messages, contexts, parameters);
             break;
         case 'ask-resource-with-location': //search for resource with given location
-            actions.findResource(sender, action, message, contexts, parameters);
+            actions.findResource(sender, action, messages, contexts, parameters);
             break;
         default:
-            fb_messaging.sendTextMessage(sender, message);
+            fb_messaging.sendTextMessages(sender, messages);
     }
 }
 
