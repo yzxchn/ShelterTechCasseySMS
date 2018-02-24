@@ -41,11 +41,11 @@ function handleApiAiResponse(sender, response) {
 //            // not differentiating between default text message and custom payloads for now.
 //            fb_messaging.sendTextMessage(sender, msg.speech);
 //        }
-        let final_msg = "";
-        for (let m of messages) {
-            final_msg = final_msg.concat(m.speech);
-        }
-        handleApiAiAction(sender, action, final_msg, contexts, parameters);
+        //let final_msg = "";
+        //for (let m of messages) {
+        //    final_msg = final_msg.concat(m.speech);
+        //}
+        handleApiAiAction(sender, action, messages, contexts, parameters);
     }
 }
 
@@ -150,16 +150,16 @@ function handleApiAiResponse(sender, response) {
 //     }
 // }
 
-function handleApiAiAction(sender, action, message, contexts, parameters) {
+function handleApiAiAction(sender, action, messages, contexts, parameters) {
     switch (action) {
         case 'request-location': //asks the user to share their location
-            actions.requestUserLocation(sender, action, message, contexts, parameters);
+            actions.requestUserLocation(sender, action, messages, contexts, parameters);
             break;
         case 'ask-resource-with-location': //search for resource with given location
-            actions.findResource(sender, action, message, contexts, parameters);
+            actions.findResource(sender, action, messages, contexts, parameters);
             break;
         default:
-            fb_messaging.sendTextMessage(sender, message);
+            fb_messaging.sendTextMessages(sender, messages);
     }
 }
 
