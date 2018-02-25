@@ -83,13 +83,13 @@ app.post('/webhook/', function (req, res) {
     //console.log(JSON.stringify(data));
     //
     // Make sure this is a page subscription
+    console.log(data);
     if (data.object == 'page') {
         // Iterate over each entry
         // There may be multiple if batched
         data.entry.forEach(function (pageEntry) {
             var pageID = pageEntry.id;
             var timeOfEvent = pageEntry.time;
-
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function (messagingEvent) {
                 if (messagingEvent.optin) {

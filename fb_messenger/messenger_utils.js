@@ -14,7 +14,7 @@ module.exports = {
  * get the message id in a response 
  *
  */
-function callSendAPI(messageData) {
+function callSendAPI(messageData, callback) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {
@@ -31,6 +31,10 @@ function callSendAPI(messageData) {
             if (messageId) {
                 console.log("Successfully sent message with id %s to recipient %s",
                     messageId, recipientId);
+                console.log("Message Text: %s", messageData.message.text);
+                if (callback){
+                    callback();
+                }
             } else {
                 console.log("Successfully called Send API for recipient %s",
                     recipientId);
