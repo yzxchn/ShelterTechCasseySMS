@@ -19,11 +19,15 @@ module.exports.findResource = async function (sender, action, message, contexts,
     let resources = await askdarcel_querying.getResourcesByIdLoc(resource_id, longitude,latitude);
     resources = resources["resources"];
     if (resources) {
-        fb_messaging.sendTextMessage(sender, "Here's what I can find:");
         let templateMessage = templateGeneration.generateListing(resources, 3);
+        fb_messaging.sendTextMessage(
+            sender, 
+            "Here's what I can find:", 
+            function () {
+                fb_messaging.sendTemplateMessage(sender, templateMessage)
+            });
         //sendTemplate is actually printResources in generateResourceListing
-        fb_messaging.sendTemplateMessage(sender, templateMessage);
-
+        //fb_messaging.sendTemplateMessage(sender, templateMessage);
     } else {
         fb_messaging.sendTextMessage(sender, "Sorry, I couldn't find anything");
     }

@@ -1,5 +1,5 @@
 'use strict';
-let testJson = require('../testing.json');
+//let testJson = require('../testing.json');
 
 // Generate a List template of resources as Facebook template
 //
@@ -69,11 +69,10 @@ let printResources = function(resourceList){
                 `);
     counter++;
   })
-
 }
 
 //testing
-console.log(generateListing(testJson, 3))
+//console.log(generateListing(testJson, 3))
 
 module.exports = {
     generateListing,
