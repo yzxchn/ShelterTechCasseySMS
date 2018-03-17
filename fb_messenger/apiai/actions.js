@@ -3,6 +3,7 @@ const fb_messaging = require('../messaging.js');
 const fb_sample = require('../templates/sample_listing.js');
 const askdarcel_querying = require('../../askdarcel/askdarcel.js');
 const templateGeneration = require('../../askdarcel/generateResourceListing.js');
+const gmaps = require('../../googlemap/convertingAddress.js');
 
 module.exports.requestUserLocation = function (sender, action, message, contexts, parameters) {
     var replies = [{"content_type":"location"}];
@@ -31,4 +32,18 @@ module.exports.findResource = async function (sender, action, message, contexts,
     } else {
         fb_messaging.sendTextMessage(sender, "Sorry, I couldn't find anything");
     }
+}
+
+module.exports.findResourceWithAddress = function (sender, action, messages, contexts, parameters) {
+    // what to do after sending the messages
+    let address = parameters.address;
+    let cb = async function () {
+        let coord = await gmaps.geoCoding(address);
+        if (coord) {
+            console.log("Checking AskDarcel with coord lat: "+coord.latitude+" longitude: "+coord.longitude);
+        } else {
+            fb_messaging.sendTextMessage(sender, "Sorry, I couldn't find anything near that address.");
+        }
+    }
+    fb_messaging.sendTextMessages(sender, messages, cb);
 }

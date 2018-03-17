@@ -3,8 +3,7 @@
 const settings = require('../settings.js');
 const request = require('request');
 const rp = require('request-promise-native');
-const {URL} = require('url');
-
+//const {URL} = require('url');
 const BASE_URL = settings.tokens.ASKDARCEL_URL;
 
 module.exports.getCategories = async function () {

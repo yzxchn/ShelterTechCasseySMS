@@ -53,7 +53,17 @@ function sendTextMessage(recipientId, text, callback) {
     fb_utils.callSendAPI(messageData, callback);
 }
 
-function sendTextMessages(recipientId, text_array) {
+
+/**
+ * Send multiple messages to Facebook.
+ *
+ * Send an array of messages in order to a user. 
+ *
+ * @param recipientId - The ID of the user to send the messages to
+ * @param text_array - An array of strings.
+ * @param callback - Specify what else to do after sending the messages.
+ */
+function sendTextMessages(recipientId, text_array, callback) {
     if (text_array.length > 0){
         let text = text_array.shift();
         sendTextMessage(recipientId, text, 
@@ -61,6 +71,9 @@ function sendTextMessages(recipientId, text_array) {
                 sendTextMessages(recipientId, text_array);
             }
         );
+    }
+    if (callback && typeof callback === 'function') {
+        callback();
     }
 }
     
