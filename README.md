@@ -5,7 +5,7 @@ The project is currently under development.
 
 ## System Architechture
 The chatbot contains, for the most part, 3 components:
-* Facebook Messenger Platform: provides the user interface. [Cassey's page]() lives there, and the user interacts with the 
+* Facebook Messenger Platform: provides the user interface. [Cassey's page](https://www.facebook.com/Cassey-SMS-dev-2057865007793369/) lives there, and the user interacts with the 
   bot by sending and receiving messages to/from the page.   
   Note that we are only using this for the purpose of prototyping. We will switch to a platform that can actually send and 
   receive text messages from the user in the future. 
