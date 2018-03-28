@@ -47,3 +47,6 @@ The chatbot contains, for the most part, 3 components:
    ```
    where `/path/to/ngrok` is where you put the downloaded file. If it is in your current working directory, then it should be 
    `./ngrok`. `<NODE_APP_PORT>` is the port number the app is running on after you typed the command in step 5.
+8. Now you should have an https URL for the app running on your machine. Use this URL to 
+   [connect it to the Facebook app]( https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup). 
+   
