@@ -33,7 +33,7 @@ The chatbot contains, for the most part, 3 components:
    npm install
    ```
    this command would install the packages specified in [`package.json`](ShelterTechCasseySMS/package.json).
-4. Acquire the `config` file through email/Slack, and put the file in the root directory of the project.
+4. Get the `config` file by pinging me through email/Slack, and put the file in the root directory of the project.
 5. Test and make sure you can run the server successfully: 
    ```shell
    NODE_ENV=local node app.js
